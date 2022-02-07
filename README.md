@@ -2,7 +2,8 @@
 
 ## Purpose
 
-The purpose of this project was to create the back end for an e-commerce site by configuring a working Express.js API to use Sequelize to interact with a MySQL database. With this application, a user can create, read, update and delete data from their database.
+The purpose of this project is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
+This site is built completely from scratch and is deployed to Heroku. The application follows the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
 ## Installation and Usage
 
