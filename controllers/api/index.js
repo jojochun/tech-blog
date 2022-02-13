@@ -1,2 +1,10 @@
-DROP DATABASE IF EXISTS techblog_db;
-CREATE DATABASE techblog_db;
+const router = require('express').Router();
+const postRoutes = require('./post-routes');
+const userRoutes = require('./user-routes');
+const commentRoutes = require('./comment-routes');
+
+router.use('/post', postRoutes);
+router.use('/user', userRoutes);
+router.use('/comment', commentRoutes);
+
+module.exports = router;

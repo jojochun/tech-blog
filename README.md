@@ -18,7 +18,7 @@ git@github.com:jojochun/tech-blog.git
 3. Navigate to the root of the downloaded code by typing:
 
 ```shell
-cd e-commerce-back-end
+cd tech-blog
 ```
 
 4. Install required dependencies by opening a terminal and on command line type:
