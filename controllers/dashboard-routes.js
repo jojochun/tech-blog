@@ -2,6 +2,8 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
+
+
 router.get('/', withAuth, (req, res) => {
     Post.findAll({
         where: {
@@ -13,9 +15,10 @@ router.get('/', withAuth, (req, res) => {
             'content',
             'created_at'
         ],
+        order: [['created_at', 'DESC']],
         include: [{
             model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
             include: {
                 model: User,
                 attributes: ['username']
@@ -36,28 +39,28 @@ router.get('/', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+
 router.get('/edit/:id', withAuth, (req, res) => {
-    Post.findOne({
-        where: {
-            id: req.params.id
-        },
+    Post.findByPk(req.params.id, {
+
         attributes: ['id',
             'title',
             'content',
             'created_at'
         ],
-        include: [{
-            model: User,
-            attributes: ['username']
-        },
-        {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            include: {
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username', 'email']
+                }
+            },
+            {
                 model: User,
-                attributes: ['username']
+                attributes: ['username', 'email']
             }
-        }
         ]
     })
         .then(postData => {
@@ -67,15 +70,15 @@ router.get('/edit/:id', withAuth, (req, res) => {
             }
 
             const post = postData.get({ plain: true });
+            if (post.user.email !== req.session.email) {
+                res.redirect('/dashboard');
+            }
             res.render('edit-post', { post, loggedIn: true });
         })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
-})
-router.get('/new', (req, res) => {
-    res.render('new-post');
 });
 
 module.exports = router;
