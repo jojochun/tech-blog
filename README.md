@@ -39,7 +39,7 @@ code .env
 6. Add the following to the .env file:
 
 ```shell
-DB_NAME='tech-talks_db'
+DB_NAME='tech_blog_db'
 DB_USER=''
 DB_PW=''
 ```
