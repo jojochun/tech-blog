@@ -1,4 +1,4 @@
-# TECH BLOG
+# TECH TALKS
 
 ## Purpose
 
@@ -12,13 +12,13 @@ This site is built completely from scratch and is deployed to Heroku. The applic
 2. Clone or download the source code from GitHub to your local machine:
 
 ```shell
-git@github.com:jojochun/tech-blog.git
+git@github.com:jojochun/tech-talks.git
 ```
 
 3. Navigate to the root of the downloaded code by typing:
 
 ```shell
-cd tech-blog
+cd tech-talks
 ```
 
 4. Install required dependencies by opening a terminal and on command line type:
@@ -39,7 +39,7 @@ code .env
 6. Add the following to the .env file:
 
 ```shell
-DB_NAME='tech-blog_db'
+DB_NAME='tech-talks_db'
 DB_USER=''
 DB_PW=''
 ```
@@ -68,7 +68,7 @@ npm start
 
 ## Screenshot
 
-![a screenshot of my app](./assets/tech-blog.png)
+![a screenshot of my app](./assets/tech-talks.png)
 
 ## Video Walkthrough
 
